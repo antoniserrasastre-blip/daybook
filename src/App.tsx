@@ -7,8 +7,9 @@ import {
   Lightbulb, Bell, Phone, CalendarClock, CreditCard, Cake, Palette,
   HelpCircle, Cloud, CloudRain, Sun, CloudSnow, Wind, MapPin,
   AlertCircle, Clock, Target, CheckCircle2, Circle, PlayCircle,
-  ArrowRight, Zap, TrendingUp, Flag
+  ArrowRight, Zap, TrendingUp, Flag, FolderKanban
 } from "lucide-react";
+import { ProjectsView } from "./components/Projects";
 
 const storage = {
   get: (key) => {
@@ -544,6 +545,7 @@ export default function Dashboard() {
               { id: "reminders", label: "Reminders", icon: Bell, badge: pendingReminders.length },
               { id: "notes",     label: "Notas",     icon: FileText },
               { id: "calendar",  label: "Calendar",  icon: Calendar },
+              { id: "projects",  label: "Proyectos", icon: FolderKanban },
               { id: "links",     label: "Links",     icon: Link2 }
             ].map(v => {
               const Icon = v.icon;
@@ -931,6 +933,8 @@ export default function Dashboard() {
             </div>
           </div>
         )}
+
+        {activeView === "projects" && <ProjectsView />}
 
         {activeView === "links" && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
